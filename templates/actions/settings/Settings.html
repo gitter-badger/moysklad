@@ -1,0 +1,79 @@
+{*
+ * @author Maleev Artem <maleev777@gmail.com>
+ *}
+    {* Switcher *}
+    <link rel="stylesheet" href="{$wa_url}wa-content/js/jquery-plugins/ibutton/jquery.ibutton.min.css?v={$wa->version()}">
+    <script src="{$wa_url}wa-content/js/jquery-plugins/ibutton/jquery.ibutton.min.js"></script>
+
+    {* Ace *}
+    <script type="text/javascript" src="{$wa_url}wa-content/js/ace/ace.js"></script>
+    <script type="text/javascript" src="{$wa_url}wa-content/js/jquery-wa/wa.elrte.ace.js"></script>
+
+    <link rel="stylesheet" href="{$plugin_url}css/moysklad.css?v={$wa->version()}">
+    <script type="text/javascript" src="{$plugin_url}js/moysklad.js?={$wa->version()}"></script>
+
+    <h1>[`Moysklad Settings`]</h1>
+    <div class="fields form">
+        <form action="about:blank" id="moysklad-form">
+            {$wa->csrf()}
+            <div class="field-group">
+                <div class="field">
+                    <div class="name">[`Plugin status`]:</div>
+                    <div class="value">
+                        <div class="ibutton-checkbox">
+                            <ul class="menu-h">
+                                <li>
+                                    <span class="switcher-off-label">[`Off`]</span>
+                                </li>
+                                <li>
+                                    <input class="switcher enable-plugin" type="checkbox" name="settings[enable]" value="1" {if (isset($settings['enable']) && $settings['enable'] !== '0') || !isset($settings['enable'])}checked="checked"{/if} />
+                                </li>
+                                <li>
+                                    <span class="switcher-on-label">[`On`]</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {*Если плагин активирован тогда показываем блок с настройками*}
+            <div class="field-group{if isset($settings['enable']) && $settings['enable'] == 0} hidden{/if}">
+
+                <div class="field">
+                    <div class="name">[`Moysklad Login`]:</div>
+                    <div class="value">
+                        <label><input type="text" name="settings[login]" value="{$settings.login}"/></label>
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="name">[`Moysklad Password`]:</div>
+                    <div class="value">
+                        <label><input type="password" name="settings[password]" value="{$settings.password}"/></label>
+                    </div>
+                </div>
+            </div>
+            <div class="field"><em class="errormsg"></em></div>
+            <div class="field"><input type="submit" id="moysklad-save" class="button green" value="[`Save`]" /></div>
+        </form>
+    </div>
+    <link type="text/css" rel="stylesheet" href="{$wa_url}wa-content/js/elrte/elrte.min.css"/>
+    <link type="text/css" rel="stylesheet" href="{$wa_url}wa-content/js/elrte/elrte-wa.css"/>
+    <script src="{$wa_url}wa-content/js/elrte/elrte.min.js"></script>
+    <script src="{$wa_url}wa-content/js/elrte/elrte-wa.js"></script>
+    {if $lang !== 'en'}<script src="{$wa_url}wa-content/js/elrte/i18n/elrte.{$lang}.js"></script>{/if}
+    <link type="text/css" rel="stylesheet" href="{$wa_url}wa-content/js/redactor/redactor.css">
+    <script src="{$wa_url}wa-content/js/redactor/redactor.min.js"></script>
+    {if $lang!='en'}<script src="{$wa_url}wa-content/js/redactor/{$lang}.js"></script>{/if}
+    <script src="{$wa_url}wa-content/js/jquery-wa/editor.js?v{$wa->version()}"></script>
+
+<script type="text/javascript">
+    var wa_lang = '{$lang}';
+    var wa_csrf = '{$csrf}';
+    var wa_url = '{$wa_url}';
+    var wa_app = 'shop';
+    $(function () {
+
+        $.moysklad.initSettings();
+
+    });
+</script>

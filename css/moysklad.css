@@ -1,0 +1,18 @@
+/*
+ * @author Maleev Artem <maleev777@gmail.com>
+ */
+
+#moysklad-form hr { margin: 10px 0; }
+
+.moysklad-product-block{ max-width: 1000px; margin: 0 auto; }
+.hint { margin-top: 5px; }
+
+.CodeMirror { border: 1px solid #eee; }
+.CodeMirror-scroll { height: auto; overflow-y: hidden; overflow-x: auto; min-height: 70px; }
+.CodeMirror-gutter { min-height: 70px; }
+
+.show-styles { position: relative; top: 5px; }
+.restore-styles { color: #888; font-size: 0.95em; }
+
+.ace_content { border: 1px solid #eee; padding: 10px; }
+.ace_editor { padding-bottom: 10px }

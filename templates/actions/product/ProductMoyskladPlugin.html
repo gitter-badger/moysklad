@@ -1,0 +1,85 @@
+{*
+* @author Maleev Artem <maleev777@gmail.com>
+*}
+<div style="text-align: center">
+    <p>{_wd($domain_url, 'Sinc Articles for ')} {$product_name}</p>
+</div>
+{if empty($empty_skus)}
+<form action="?plugin=moysklad&module=product&action=save" method="post" id="moysklad-product-form">
+    {if $wa->userRights('settings')}{$settings_page = sprintf('<a href="?action=plugins#/moysklad/" target="_blank">%s</a>', _wd($domain_url, 'settings page'))}{else}{$settings_page = _wd($domain_url, 'settings page')}{/if}
+
+    <div class="moysklad-product-block">
+        <table class="zebra moysklad-product-table">
+            <thead>
+            <tr>
+                <th style="width: 150px;">{_wd($domain_url, 'Article')}</th>
+                <th style="width: 150px;">{_wd($domain_url, 'External Code')}</th>
+                <th></th>
+                <th style="width: 150px;">{_wd($domain_url, 'Uuid')}</th>
+                <th style='width: 100px;'>{_wd($domain_url, 'Purchase Price')}</th>
+                <th style='width: 100px;'>{_wd($domain_url, 'Price')}</th>
+                <th style='width: 100px;'>{_wd($domain_url, 'Compare Price')}</th>
+                <th style='width: 50px;'>{_wd($domain_url, 'Quantity')}</th>
+                <th style='width: 50px;'>{_wd($domain_url, 'Available')}</th>
+                <th class="min-width"></th>
+            </tr>
+            </thead>
+            <tbody>
+            {foreach $skus as $sku}
+            <!-- Написать учет по ID из таблицы shop_moysklad_products -->
+            <tr class='moysklad-product-id-{$sku.product_id}-{$sku.id} itemsets-item' data-id='{$sku.product_id}-{$sku.id}'>
+                <td>
+                    <a href='#/product/{$sku.product_id}/' target='_blank'>
+                        {$sku.sku}
+                        <span class='moysklad-product-active-stock'>
+                           <span class='itemsets-stock-0' style='display: inline-block'>
+
+                               <i class="icon10 {if $sku.moysklad_uuid!=0 && $sku.moysklad_uuid!=null}status-green {else} status-red {/if}"></i>
+
+                            </span>
+                        </span>
+                        {if $item.sku_name}<span class="hint">{$item.sku_name|escape}</span>{/if}
+                    </a>
+                </td>
+                <td>
+                    <input type="text" name="moysklad-product[{$sku.id}][external_code]" value="{$sku.moysklad_external_code}" />
+                </td>
+                <td>
+                    <input type="button" value="{_wd($domain_url, 'Check')}" />
+                </td>
+                <td>
+                    <input type="text" name="moysklad-product[{$sku.id}][uuid]" value="{$sku.moysklad_uuid}" />
+                </td>
+                <td>
+                    {shop_currency($sku.purchase_price)}
+                </td>
+                <td>
+                    {shop_currency($sku.price)}
+                </td>
+                <td>
+                    {shop_currency($sku.compare_price)}
+                </td>
+                <td>
+                    {$sku.count}
+                </td>
+                <td>
+                    <input type="checkbox" name="moysklad-product[{$sku.id}][available]" value="1" {if $sku.available}checked{/if} />
+                </td>
+            </tr>
+            {/foreach}
+            </tbody>
+        </table>
+    </div>
+
+    <div class="errormsg align-center"></div>
+</form>
+<script type="text/javascript">
+    $(function () {
+        $.moysklad.initProductForm();
+    });
+</script>
+{else}
+<div class="align-center">
+    <p>{_wd($domain_url, 'If you want to link the article with MoySklad you must first create it')}</p>
+</div>
+{/if}
