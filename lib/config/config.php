@@ -4,6 +4,7 @@
  * @author Maleev Artem <maleev777@gmail.com>
  */
 
+//Настройки по умолчанию
 return array(
     'settings' => array(
         'enable' => 1,

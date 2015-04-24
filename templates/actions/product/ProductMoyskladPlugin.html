@@ -26,7 +26,7 @@
             </thead>
             <tbody>
             {foreach $skus as $sku}
-            <!-- Написать учет по ID из таблицы shop_moysklad_products -->
+            <!-- @TODO:Написать учет по ID из таблицы shop_moysklad_products -->
             <tr class='moysklad-product-id-{$sku.product_id}-{$sku.id} itemsets-item' data-id='{$sku.product_id}-{$sku.id}'>
                 <td>
                     <a href='#/product/{$sku.product_id}/' target='_blank'>

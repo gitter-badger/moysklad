@@ -15,7 +15,9 @@ return array(
         16 => 'img/moysklad.png',
         24 => 'img/moysklad24.png',
     ),
+    //Включаем отображения плагина в настройках
     'shop_settings' => true,
+    //Привязываем методы плагина к хукам
     'handlers' => array(
         'product_save' => 'productSave',
         'product_delete' => 'productDelete',

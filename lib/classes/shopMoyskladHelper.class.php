@@ -8,6 +8,7 @@ class shopMoyskladHelper{
 
     private static $settings = array();
 
+
     /**
      * Get plugin settings
      *
@@ -18,11 +19,12 @@ class shopMoyskladHelper{
         if (!self::$settings) {
             $sm = new shopMoyskladSettingsPluginModel();
             $settings = $sm->get('settings');
-            // Дефолтные настройки плагина
+            //Настройки из базы
             if ($settings) {
                 self::$settings = $settings;
                 self::$settings['output_places'] = isset($settings['output_places']) ? (array) $settings['output_places'] : array();
             } else {
+                // Дефолтные настройки
                 $config = include shopMoyskladPluginHelper::path('lib/config/config.php', true);
 
                 self::$settings = $config['settings'];

@@ -8,6 +8,10 @@ class shopProductMoyskladProductPluginAction extends waViewAction
 
     public function execute()
     {
+
+        $sh=new shopMoyskladOrderPluginModel();
+        $sh->putOrder(9);
+
         waLocale::loadByDomain(array('shop', 'moysklad'));
 
         $this->setTemplate('ProductMoyskladPlugin');

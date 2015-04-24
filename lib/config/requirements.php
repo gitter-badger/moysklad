@@ -1,5 +1,6 @@
 <?php
 
+//Требования к серверу и скрипту
 return array(
     'app.shop' => array(
         'strict' => true,
