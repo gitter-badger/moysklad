@@ -51,6 +51,30 @@
                         <label><input type="password" name="settings[password]" value="{$settings.password}"/></label>
                     </div>
                 </div>
+
+                <!-- @TODO: Автоматически получать данные о компании через API -->
+                {*Идeнтификатор компании (MyCompany)*}
+                <div class="field">
+                    <div class="name">[`Moysklad Store identificator`]:</div>
+                    <div class="value">
+                        <label><input type="password" name="settings[store_uuid]" value="{$settings.store_uuid}" placeholder="e1edadf3-ea4a-4b8c-93ed-4a7c0c183469"/></label>
+                    </div>
+                </div>
+
+                <!-- @TODO: Автоматически получать список всех складов через API -->
+                {*Подразумевает идентификатор склада (Warehouse) на который адресован заказ например Магазин или Склад*}
+                <div class="field">
+                    <div class="name">[`Moysklad Store identificator`]:</div>
+                    <div class="value">
+                        <!-- @TODO: Проверять валидность введенного идентификатора -->
+                        <label><input type="password" name="settings[store_uuid]" value="{$settings.store_uuid}" placeholder="e1edadf3-ea4a-4b8c-93ed-4a7c0c183469"/></label>
+                    </div>
+                </div>
+
+
+
+
+
             </div>
             <div class="field"><em class="errormsg"></em></div>
             <div class="field"><input type="submit" id="moysklad-save" class="button green" value="[`Save`]" /></div>

@@ -6,11 +6,13 @@ class shopMoyskladOrderPluginModel extends waModel{
     /**
      * @param $order_id int
      */
-    public function putOrder($order_id=9){
+    public function putOrder($order_id){
         if((int)$order_id) {
             $som = new shopOrderModel();
             $order = $som->getById($order_id);
-            $xmlOrder = $this->prepareOrderFields($order);
+
+            $xmlOrder='<?xml version="1.0" encoding="UTF-8"?><customerOrder></customerOrder>';
+            $xmlOrder.= $this->prepareOrderFields($order);
             $mskClient = new shopMoyskladClient();
             $mskClient->putOrder($xmlOrder->asXML());
         }
@@ -24,7 +26,7 @@ class shopMoyskladOrderPluginModel extends waModel{
      */
     protected function prepareOrderFields($order){
 
-        $data= new SimpleXMLElement('<?xml version="1.0" encoding="UTF-8"?><customerOrder></customerOrder>');
+        $data= new SimpleXMLElement('<customerOrder></customerOrder>');
 
         //номер заказа
         $data->addAttribute('name','100'.$order['id']);

@@ -59,7 +59,7 @@ class shopMoyskladClient{
      * @param $request string
      * @return string
      */
-    protected function sendData($request,$body=""){
+    public function sendData($request,$body=""){
         $sendHead=$request." HTTP/1.0\r\n";
         $sendHead .= "Host: ".$this->msHost."\r\n";
         $sendHead .= "Authorization: Basic ".base64_encode($this->msLogin.':'.$this->msPassword)."\r\n";
