@@ -29,11 +29,7 @@ class shopMoyskladPlugin extends waPlugin
 
     public function productSave($params)
     {
-        $settings = shopMoyskladHelper::getSettings();
-        if ($settings['enable']) {
-            $product = $params['data'];
-            shopItemsetsHelper::recountSkus($product);
-        }
+
     }
 
     public function orderActionCreate($params)

@@ -53,26 +53,53 @@
                 </div>
 
                 <!-- @TODO: Автоматически получать данные о компании через API -->
-                {*Идeнтификатор компании (MyCompany)*}
+                {*Идeнтификатор компании (MyCompany) targetAgent *}
                 <div class="field">
-                    <div class="name">[`Moysklad Store identificator`]:</div>
+                    <div class="name">[`Moysklad Organization identificator`]:</div>
                     <div class="value">
-                        <label><input type="password" name="settings[store_uuid]" value="{$settings.store_uuid}" placeholder="e1edadf3-ea4a-4b8c-93ed-4a7c0c183469"/></label>
+                        <label><input type="text" name="settings[organization_uuid]" value="{$settings.organization_uuid}" placeholder="ae4a3e66-f5be-409e-a71a-8cb5559e0683"/></label>
                     </div>
                 </div>
 
                 <!-- @TODO: Автоматически получать список всех складов через API -->
-                {*Подразумевает идентификатор склада (Warehouse) на который адресован заказ например Магазин или Склад*}
+                {*Подразумевает идентификатор склада (Warehouse) на который адресован заказ sourceStoreUuid *}
                 <div class="field">
                     <div class="name">[`Moysklad Store identificator`]:</div>
                     <div class="value">
                         <!-- @TODO: Проверять валидность введенного идентификатора -->
-                        <label><input type="password" name="settings[store_uuid]" value="{$settings.store_uuid}" placeholder="e1edadf3-ea4a-4b8c-93ed-4a7c0c183469"/></label>
+                        <label><input type="text" name="settings[store_uuid]" value="{$settings.store_uuid}" placeholder="e1edadf3-ea4a-4b8c-93ed-4a7c0c183469"/></label>
+                    </div>
+                </div>
+
+                <!-- @TODO: Прелагать выбор из типов цен которые используются в МойСклад-->
+                {* Идентификатор типа цен для новыx Контрагентов (Company)   PriceType*}
+
+                <div class="field">
+                    <div class="name">[`Moysklad PriceType for new contaragents`]:</div>
+                    <div class="value">
+                        <!-- @TODO: Проверять валидность введенного идентификатора -->
+                        <label><input type="text" name="settings[contragent_price_type]" value="{$settings.contragent_price_type}" placeholder="3d9cb070-acc8-42d9-a135-84018a862cfa"/></label>
                     </div>
                 </div>
 
 
+                <!-- @TODO: Прелагать выбор из списка доступных статусов-->
+                {* Идентификатор статуса для новыx Контрагентов (Workflow) workflow name="Company" *}
 
+                <div class="field">
+                    <div class="name">[`Moysklad Workflow for new contaragents`]:</div>
+                    <div class="value">
+                        <!-- @TODO: Проверять валидность введенного идентификатора -->
+                        <label><input type="text" name="settings[contragent_workflow]" value="{$settings.contragent_workflow}" placeholder="30d39d07-d9f0-11e3-f58f-002590a28eca"/></label>
+                    </div>
+                </div>
+                {* Контрагент который будет использоваться по умолчанию *}
+                <div class="field">
+                    <div class="name">[`Moysklad Default Contagent identificator`]:</div>
+                    <div class="value">
+                        <label><input type="text" name="settings[default_contragent]" value="{$settings.default_contragent}" placeholder="3f2c8232-ba46-11e3-3f18-002590a28eca"/></label>
+                    </div>
+                </div>
 
 
             </div>

@@ -115,8 +115,8 @@ class shopMoyskladClient{
         return $response;
     }
 
-    public function putOrder($data){
-        $request="PUT ".$this->msRestUrl."CustomerOrder";
+    public function putItem($type,$data){
+        $request="PUT ".$this->msRestUrl."".$type;
         $response=$this->sendData($request,$data);
         return $response;
     }
